@@ -32,5 +32,15 @@
         <env name="PULSE_ENABLED" value="false"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="NIGHTWATCH_ENABLED" value="false"/>
+        <env name="WHATSAPP_ACCESS_TOKEN" value="test-token"/>
+        <env name="WHATSAPP_PHONE_NUMBER_ID" value="1001"/>
+        <env name="WHATSAPP_BUSINESS_ACCOUNT_ID" value="2002"/>
+        <env name="WHATSAPP_API_VERSION" value="v25.0"/>
+        <env name="WHATSAPP_TEST_RECIPIENT" value="15551230000"/>
+        <env name="WHATSAPP_DEFAULT_TEMPLATE" value="hello_world"/>
+        <env name="WHATSAPP_TEMPLATE_LANGUAGE" value="en_US"/>
+        <env name="WHATSAPP_TEST_MODE" value="true"/>
+        <env name="WHATSAPP_WEBHOOK_VERIFY_TOKEN" value="verify-test"/>
+        <env name="WHATSAPP_APP_SECRET" value="test-secret"/>
     </php>
 </phpunit>

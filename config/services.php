@@ -35,4 +35,17 @@ return [
         ],
     ],
 
+    'whatsapp' => [
+        'token' => env('WHATSAPP_ACCESS_TOKEN'),
+        'phone_number_id' => env('WHATSAPP_PHONE_NUMBER_ID'),
+        'business_account_id' => env('WHATSAPP_BUSINESS_ACCOUNT_ID'),
+        'version' => env('WHATSAPP_API_VERSION', 'v25.0'),
+        'test_recipient' => env('WHATSAPP_TEST_RECIPIENT'),
+        'default_template' => env('WHATSAPP_DEFAULT_TEMPLATE', 'hello_world'),
+        'template_language' => env('WHATSAPP_TEMPLATE_LANGUAGE', 'en_US'),
+        'test_mode' => filter_var(env('WHATSAPP_TEST_MODE', true), FILTER_VALIDATE_BOOLEAN),
+        'webhook_verify_token' => env('WHATSAPP_WEBHOOK_VERIFY_TOKEN'),
+        'app_secret' => env('WHATSAPP_APP_SECRET'),
+    ],
+
 ];
