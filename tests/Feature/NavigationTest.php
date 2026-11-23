@@ -20,16 +20,32 @@ class NavigationTest extends TestCase
         $response->assertSee('Mensagens');
         $response->assertSee('Modelos');
         $response->assertSee('Configurações');
+        $response->assertSee('Gerenciar obrigações');
+        $response->assertSee('Gerenciar modelos');
         $response->assertDontSee("Let's get started");
         $response->assertDontSee('Campanhas');
+    }
+
+    public function test_obligations_open_the_listing_instead_of_the_placeholder(): void
+    {
+        $this->get(route('obligations.index'))
+            ->assertOk()
+            ->assertSee('Nova obrigação')
+            ->assertDontSee('Este módulo será implementado em uma próxima etapa.');
+    }
+
+    public function test_templates_open_the_listing_instead_of_the_placeholder(): void
+    {
+        $this->get(route('templates.index'))
+            ->assertOk()
+            ->assertSee('Novo modelo')
+            ->assertDontSee('Este módulo será implementado em uma próxima etapa.');
     }
 
     public function test_future_modules_show_a_pending_page(): void
     {
         $modules = [
-            'obligations' => 'Obrigações',
             'messages' => 'Mensagens',
-            'templates' => 'Modelos',
             'settings' => 'Configurações',
         ];
 
@@ -45,5 +61,7 @@ class NavigationTest extends TestCase
     public function test_unknown_module_returns_not_found(): void
     {
         $this->get('/modules/billing')->assertNotFound();
+        $this->get('/modules/obligations')->assertNotFound();
+        $this->get('/modules/templates')->assertNotFound();
     }
 }

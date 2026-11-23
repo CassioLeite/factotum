@@ -7,6 +7,7 @@ use Database\Factories\ContactFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
     'name',
@@ -34,5 +35,13 @@ class Contact extends Model
             'whatsapp_consent' => 'boolean',
             'whatsapp_consent_at' => 'datetime',
         ];
+    }
+
+    /**
+     * @return HasMany<Obligation, $this>
+     */
+    public function obligations(): HasMany
+    {
+        return $this->hasMany(Obligation::class);
     }
 }

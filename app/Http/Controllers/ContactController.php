@@ -67,7 +67,9 @@ class ContactController extends Controller
 
     public function destroy(Contact $contact): RedirectResponse
     {
-        $this->contacts->delete($contact);
+        if (! $this->contacts->delete($contact)) {
+            return back()->with('error', 'Este contato possui obrigações e não pode ser excluído.');
+        }
 
         return to_route('contacts.index')->with('success', 'Contato excluído.');
     }

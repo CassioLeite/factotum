@@ -9,9 +9,7 @@ class ModulePlaceholderController extends Controller
     public function __invoke(string $module): View
     {
         $titles = [
-            'obligations' => 'Obrigações',
             'messages' => 'Mensagens',
-            'templates' => 'Modelos',
             'settings' => 'Configurações',
         ];
 

@@ -24,10 +24,24 @@
             </a>
         </section>
 
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <h2 class="text-lg font-semibold">Obrigações</h2>
+            <p class="mt-2 text-sm text-slate-600">Cadastre vencimentos ligados aos contatos.</p>
+            <a href="{{ route('obligations.index') }}" class="mt-4 inline-flex rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400">
+                Gerenciar obrigações
+            </a>
+        </section>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <h2 class="text-lg font-semibold">Modelos</h2>
+            <p class="mt-2 text-sm text-slate-600">Escreva os textos usados nos lembretes.</p>
+            <a href="{{ route('templates.index') }}" class="mt-4 inline-flex rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400">
+                Gerenciar modelos
+            </a>
+        </section>
+
         @foreach ([
-            'obligations' => 'Obrigações',
             'messages' => 'Mensagens',
-            'templates' => 'Modelos',
             'settings' => 'Configurações',
         ] as $slug => $label)
             <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">

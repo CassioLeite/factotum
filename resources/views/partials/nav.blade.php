@@ -2,9 +2,9 @@
     $links = [
         ['label' => 'Início', 'href' => route('home'), 'active' => request()->routeIs('home')],
         ['label' => 'Contatos', 'href' => route('contacts.index'), 'active' => request()->routeIs('contacts.*')],
-        ['label' => 'Obrigações', 'href' => route('modules.show', 'obligations'), 'active' => request()->routeIs('modules.show') && request()->route('module') === 'obligations'],
+        ['label' => 'Obrigações', 'href' => route('obligations.index'), 'active' => request()->routeIs('obligations.*')],
         ['label' => 'Mensagens', 'href' => route('modules.show', 'messages'), 'active' => request()->routeIs('modules.show') && request()->route('module') === 'messages'],
-        ['label' => 'Modelos', 'href' => route('modules.show', 'templates'), 'active' => request()->routeIs('modules.show') && request()->route('module') === 'templates'],
+        ['label' => 'Modelos', 'href' => route('templates.index'), 'active' => request()->routeIs('templates.*')],
         ['label' => 'Configurações', 'href' => route('modules.show', 'settings'), 'active' => request()->routeIs('modules.show') && request()->route('module') === 'settings'],
     ];
 @endphp

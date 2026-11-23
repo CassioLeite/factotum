@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Contact;
+use App\Models\Obligation;
 use App\Services\ContactService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -70,6 +71,25 @@ class ContactServiceTest extends TestCase
         $updated = $this->service()->update($contact, $this->data(consent: true));
 
         $this->assertSame($grantedAgainAt->toDateTimeString(), $updated->whatsapp_consent_at?->toDateTimeString());
+    }
+
+    public function test_delete_returns_false_when_the_contact_has_an_obligation(): void
+    {
+        $contact = Contact::factory()->create();
+        Obligation::factory()->create([
+            'contact_id' => $contact->id,
+        ]);
+
+        $this->assertFalse($this->service()->delete($contact));
+        $this->assertModelExists($contact);
+    }
+
+    public function test_delete_removes_a_contact_without_obligations(): void
+    {
+        $contact = $this->service()->create($this->data(consent: false));
+
+        $this->assertTrue($this->service()->delete($contact));
+        $this->assertModelMissing($contact);
     }
 
     private function service(): ContactService

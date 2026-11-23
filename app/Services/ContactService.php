@@ -4,11 +4,15 @@ namespace App\Services;
 
 use App\Models\Contact;
 use App\Repositories\ContactRepository;
+use App\Repositories\ObligationRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class ContactService
 {
-    public function __construct(private ContactRepository $contacts) {}
+    public function __construct(
+        private ContactRepository $contacts,
+        private ObligationRepository $obligations,
+    ) {}
 
     public function paginate(?string $search): LengthAwarePaginator
     {
@@ -31,9 +35,15 @@ class ContactService
         return $this->contacts->update($contact, $this->attributes($data, $contact));
     }
 
-    public function delete(Contact $contact): void
+    public function delete(Contact $contact): bool
     {
+        if ($this->obligations->existsFor($contact)) {
+            return false;
+        }
+
         $this->contacts->delete($contact);
+
+        return true;
     }
 
     /**
